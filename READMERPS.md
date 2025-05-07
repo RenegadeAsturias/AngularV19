@@ -37,7 +37,8 @@ Extensiones Chrome
 
 Tema VSCode
 
-*Aura Theme (Aura Dark) *Iconos (Material Icon Theme)
+*Aura Theme (Aura Dark) 
+*Iconos (Material Icon Theme)
 
 ======================================================
 
@@ -64,6 +65,12 @@ git push -u origin main
 --Para recuper la info git pull origin main
 
 ****************************************************************(07/05/2025)
+
+Creo el proyecto: desde /c/angular
+$ ng new AngularV19
+
+
+
 
 
 
