@@ -70,6 +70,12 @@ Creo el proyecto: desde /c/angular
 $ ng new AngularV19
 
 
+****************************************************************(08/05/2025)
+* CounterPageComponent
+
+git add . 
+git commit -m "Curso AngularV19" 
+git push -u origin main
 
 
 
