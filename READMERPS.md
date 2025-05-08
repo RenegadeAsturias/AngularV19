@@ -77,6 +77,13 @@ git add .
 git commit -m "Curso AngularV19" 
 git push -u origin main
 
+****************************************************************(09/05/2025)
+* Señales
+* Angular without ZoneJS (Zoneless) 
+* changeDetection: ChangDetectionStrategy.OnPush (=Zoneless)
+
+
+
 
 
 

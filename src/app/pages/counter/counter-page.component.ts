@@ -1,10 +1,22 @@
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 
 @Component({
-  template:`
-    <h1>Hola Mundo</h1>
-    <h2>Counter Page Component</h2>`,
+  selector: 'counter-page-component',
+  templateUrl : './counter-page.component.html',
+  styleUrls: ['./counter-page.component.css']
 })
 export class CounterPageComponent {
+  counter: number = 15;
+  counterSignal = signal(15);
+
+  increaseBy(value: number) {
+    this.counter += value;
+    this.counterSignal.update(current=>current+value);
+  }
+
+  reset() {
+    this.counter = 0;
+    this.counterSignal.set(0);
+  }
 
 }
