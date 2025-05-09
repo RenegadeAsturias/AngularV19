@@ -82,6 +82,37 @@ git push -u origin main
 * Angular without ZoneJS (Zoneless) 
 * changeDetection: ChangDetectionStrategy.OnPush (=Zoneless)
 
+****************************************************************(09/05/2025)
+* Crear nuevo componente con Angular CLI: 
+* NavComponent
+/c/angular/AngularV19/src/app/component/shared/navbar
+
+$ ng g c navbar
+CREATE src/app/component/shared/navbar/navbar/navbar.component.html (22 bytes)
+CREATE src/app/component/shared/navbar/navbar/navbar.component.spec.ts (615 bytes)
+CREATE src/app/component/shared/navbar/navbar/navbar.component.ts (225 bytes)
+CREATE src/app/component/shared/navbar/navbar/navbar.component.css (0 bytes)
+
+*Directivas: [RouterLink, RouterLinkActive] ********************
+import { RouterLink, RouterLinkActive } from '@angular/router';
+@Component({
+  selector: 'app-navbar',
+  imports: [RouterLink, RouterLinkActive],
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

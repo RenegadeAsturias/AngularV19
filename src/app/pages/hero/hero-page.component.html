@@ -1,18 +1,27 @@
 
-<h1>{{ name() }}</h1>
-<dl>
-  <td>Nombre:</td><dd>{{ name() }}</dd>
-
-  <td>Edad:</td><dd>{{ edad() }}</dd>
-
-  <td>Método:</td><dd>{{ getHeroDescription() }}</dd>
-
-  <td>Capitalizado:</td><dd>{{ name().toUpperCase() }}</dd>
-
-  <button class="btn btn-primary mx-2" (click)="changeHero()">Cambiar nombre</button>
-
-  <button class="btn btn-primary mx-2" (click)="changeAge()">Cambiar edad</button>
-
-  <button class="btn btn-primary mx-2" (click)="resetForm()">Reset</button>
-
-</dl>
+<div class="row">
+  <div class="col-md-1">&nbsp;</div><div class="col-md-11"><h3>{{ name() }}</h3></div>
+</div>
+<div class="row">
+  <div class="col-md-1">&nbsp;</div><div class="col-md-1">Nombre:</div><div class="col-md-10">{{ name() }}</div>
+</div>
+<div class="row">
+  <div class="col-md-1">&nbsp;</div><div class="col-md-1">Edad:</div><div class="col-md-10">{{ edad() }}</div>
+</div>
+<div class="row">
+  <div class="col-md-1">&nbsp;</div><div class="col-md-1">Método:</div><div class="col-md-10">{{ getHeroDescription() }}</div>
+</div>
+<div class="row">
+  <div class="col-md-1">&nbsp;</div><div class="col-md-1">Capitalizado:</div><div class="col-md-10">{{ name().toUpperCase() }}</div>
+</div>
+<div class="row"><div class="col-md-12"></div></div>
+<div class="row"><div class="col-md-12"><hr></div></div>
+<div class="row"><div class="col-md-12"></div></div>
+<div class="row">
+  <div class="col-md-1">&nbsp;</div>
+  <div class="col-md-11">
+    <button type="button" class="btn btn-primary mx-2" (click)="changeHero()">Cambiar hero</button>
+    <button class="btn btn-primary mx-2" (click)="changeAge()">Cambiar edad</button>
+    <button class="btn btn-primary mx-2" (click)="resetForm()">Reset</button>
+  </div>
+</div>

@@ -2,7 +2,8 @@ import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'hero-page-component',
-  templateUrl: './hero-page.component.html'
+  templateUrl: './hero-page.component.html',
+  styleUrls: ['./hero-page.component.css']
 })
 export class HeroPageComponent {
 
@@ -19,7 +20,7 @@ export class HeroPageComponent {
   }
 
   changeAge() {
-    this.edad.set(45);
+    this.edad.set(33);
   }
 
   resetForm() {
