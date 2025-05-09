@@ -100,7 +100,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [RouterLink, RouterLinkActive],
 })
 
+****************************************************************(10/05/2025)
+* Crear nuevo componente con Angular CLI: 
+* DragonballPageComponent
 
+reneg@DESKTOP-LMA62OH MINGW64 /c/angular/AngularV19/src/app/pages (main)
+$ ng g c dragonball
 
 
 
