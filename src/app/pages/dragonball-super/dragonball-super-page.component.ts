@@ -1,22 +1,20 @@
-import { NgClass } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
+import { CharacterListComponent } from '../../component/dragonball/character-list/character-list.component';
 import type { Character } from '../../interfaces/character.interface';
 
 @Component({
-  selector: 'app-dragonball',
-  //imports: [NgClass],
-  templateUrl: './dragonball-page.component.html',
+  selector: 'app-dragonball-super',
+  templateUrl: './dragonball-super-page.component.html',
+  imports: [CharacterListComponent],
 })
-export class DragonballPageComponent {
+export class DragonballSuperPageComponent {
 
   name = signal('Gohan');
   power = signal(100);
 
   characters = signal<Character[]>([
-    {id:1, name:'Goku', power:9001},
-    // {id:2, name:'Vegeta', power:8000},
-    // {id:3, name:'Picolo', power:3000},
-    // {id:4, name:'Yamcha', power:500},
+    {id:1, name:'Goku',   power:9001},
+    {id:2, name:'Vegeta', power:8000},
   ]);
 
   addCharacter() {
@@ -29,9 +27,7 @@ export class DragonballPageComponent {
       name: this.name(),
       power: this.power()
     };
-
     // this.characters().push(newCharacter); Con señales no se recomienda así
-
     this.characters.update((list)=>[...list,newCharacter]);
     this.resetFields();
   }
@@ -40,11 +36,5 @@ export class DragonballPageComponent {
     this.name.set('');
     this.power.set(0);
   }
-
-  /** Evalúa las clases a aplicar
-  powerClasses = computed(()=> {
-      return { 'text-dander':true,
-    };
-  }); */
 
 }
