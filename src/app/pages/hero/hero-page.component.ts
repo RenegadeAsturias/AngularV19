@@ -3,7 +3,6 @@ import { UpperCasePipe } from '@angular/common';
 
 @Component({
   templateUrl: './hero-page.component.html',
-  imports: [UpperCasePipe],
 })
 export class HeroPageComponent {
   name = signal('Ironman');
