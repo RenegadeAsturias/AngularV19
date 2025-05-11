@@ -21,7 +21,7 @@ export class CharacterAddComponent {
       id: Math.floor(Math.random()*1000),
       name: this.name(),
       power: this.power()
-    };
+    }
 
     this.newCharacter.emit;
     this.resetFields();

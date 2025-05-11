@@ -259,10 +259,111 @@ export class DragonballSuperPageComponent {
     this.characters.update((list)=>[...list,newCharacter]);
   }
 
+****************************************************************(11/05/2025)
+* Servicios
+* Crear servicio DragonballService
+
+* Inyectar servicios:
+
+* Ejemplo1- Inyección tradicional en el contructor (Ya no se recomienda):
+  export class DragonballSuperPageComponent {
+    // Inyección tradicional en el contructor
+    constructor(public dragonballService: DragonballService) {}
+
+* Ejemplo2- Nueva forma de inyectar el servicio:
+    public dragonballService = inject(DragonballService);
+
+* Info:
+export class DragonballSuperPageComponent {
+
+  // Inyección tradicional en el contructor
+  // constructor(public dragonballService: DragonballService) {}
+
+  // Nueva forma de inyectar el servicio
+  public dragonballService = inject(DragonballService);
+
+}
+
+****************************************************************(11/05/2025)
+*Local storage vs Session storage
+
+*1- Funcionan exactamente igual
+*2- Se guardan key-value de strings
+*3- No obstante se puede guardar un un objeto serializado como string
+
+*Diferencias de entre Local storage vs Session storage
+*4- Todo el contenido del Session storage se pierde cuando se cierra el navegador
+*5- Todo el contenido persiste aunque el usuario reinicie el PC (no tiene espacio infinito)
+
+****************************************************************(11/05/2025)
+* Efectos (Effects):
+* documentación
+
+* Effects
+  Un efecto es una operación que se ejecuta al menos una vez (similar al ngOnInit), 
+  pero si usa alguna señal, y esa señal cambia, el efecto se vuelve a ejecutar.
+  effect(() => {
+    console.log(`The current count is: ${count()}`);
+  });
+
+* Los efectos nos van a servir para poder ejecutar o disparar un efecto secundario, o una acción secundaria
+* El efecto no es más que una función que recibe un callback que es otra función
+  que vamos a querer disparar cada vez que algo suceda
+* Ejemplo, cada vez que nuestra señal 'count()' cambie, se va a ejecutar el console.log
+  effect(() => {
+    console.log(`The current count is: ${count()}`);
+  });
 
 
+* Ejemplo que guarda en el local storage, guarda la primera vez que se carga
+  Y guardará todas las veces que el effect detecte que hay un cambio en la señal o en sus dependencias
+  Como solo se puede guardar strings para guardar un objeto con el método JSON.stringify
+  serializamos el objeto de foma que se guarda como:
+  * key = 'characters'
+  * value = '[{"id":1,"name":"Goku","power":9001},{"id":2,"name":"Vegeta","power":8000}]'
 
-**************************************************
+  saveToLocalStorage = effect(()=>{
+    console.log(`Character count ${this.characters().length}`);
+    localStorage.setItem('characters',JSON.stringify(this.characters()));
+  });
+
+****************************************************************(11/05/2025)
+* Leer del local storage
+* como sabemos que es un array deserializamos el objeto con JSON.parse
+
+const loadFromLocalStorage = (): Character[] => {
+  const characters = localStorage.getItem('characters');
+  return characters ? JSON.parse(characters) : [];
+}
+
+* Si me los quiero traer a una nueva señal puede ser con:
+  charactersLS = signal<Character[]>(loadFromLocalStorage());
+
+
+****************************************************************(11/05/2025)
+Aumentar tamaño Máquina Virtual VirtualBox
+
+1ºEn VirtualBox ir a Administrador de medios virtuales...
+y modificar el tamaño de la máquina virtual
+
+2ºEntrar en la máquina virtual y desde windows ir a: administrador de discos
+Como tenemos la Partición de recuperación de windows no se actualiza nuestro cambio
+no tendremos disponible la opción de extender la partición de 50Gb que es la actual
+
+3ºEliminar la partición de sistema de recuperación de windows
+y tendremos que borrarla desde línea de comandos:
+Entramos con cdm para eliminar la participación de recuperación
+c:>diskpart --> Para entrar en DISKPART:
+DISKPART>sel disk 0 --> Para seleccionar nuestro único disco duro
+DISKPART>list part  --> Para listar las particiones del disco duro
+DISKPART>sel part 3 --> Para seleccionar la partición de recuperación
+DISKPART>delete partition override
+
+4ºEntrar en la máquina virtual y desde windows ir a: administrador de discos
+y cambiar el tamaño de la partición principal con botón derecho
+y extender partición para añadir la nueva partición.
+
+****************************************************************
 * Para clonar un repositorio:
 reneg@DESKTOP-LMA62OH MINGW64 /c/angular
 $ git clone https://github.com/DevTalles-corp/angular-bases.git

@@ -8,12 +8,12 @@
 <hr/>
 
 <div class="row">
-  <div class="col-md-1">&nbsp;</div>
+  <div class="col-md-1"></div>
   <div class="col-md-2">
-    <dragonball-character-add (newCaracter)="addCharacter($event)"/>
+    <dragonball-character-add (newCaracter)="dragonballService.addCharacter($event)"/>
   </div>
-  <div class="col-md-1">&nbsp;</div>
+  <div class="col-md-1"></div>
   <div class="col-md-5">
-    <dragonball-character-list listName="Listado cartacteres!" [characters]="characters()"/>
+    <dragonball-character-list listName="Listado cartacteres!" [characters]="dragonballService.characters()"/>
   </div>
 </div>
