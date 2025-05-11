@@ -216,22 +216,64 @@ Y para mandar el array de caracteres desde su padre utilizmos
 * Se recomienda para importar interfaces utilizar 'type'
 import type { Character } from '../../../interfaces/character.interface';
 
-git add . 
+git add .
 git commit -m "Curso AngularV19" 
 git push -u origin main
 
+****************************************************************(11/05/2025)
+
+* Mandar información del hijo al padre:
+* Ahora tenemos un pequeño componente 'character-add' con un formulario que realiza el alta del nuevo character
+* cuando hace clic en el botón de Agregar manda el objeto creado al componente padre: 'gragonball-super'
+* en el comoponente padre está la señal con el array de objetos character.
+
+* En el componente hijo declaramos el valor que vamos a emitir y su tipo
+  newCharacter = output<Character>();
+* Para ello utilizamos la función 'output' de @angular/core
+
+* Desde el componente hijo emitimos la información una vez que añade el character en el formulario.
+* Antes en el método de añadir añadíamos el nuevo Character a un array
+* pero ahora emitimos el valor de nuevo character que ha rellenado el usuario
+* porque el array de characters está en el componente padre
+  addCharacter() {
+    this.newCaracter.emit;
+  }
+
+* Ejempo componente hijo declarando lo que se va a emitir y emitiendo el objeto recogido:
+
+export class CharacterAddComponent {
+  newCharacter = output<Character>();
+  addCharacter() {
+    this.newCaracter.emit;
+  }
+}
+
+* Ahora en el padre escuchamos el evento que se emite
+no se emite el evento click, ni otros, solo se emite el evento: 'newCharacter' (this.newCaracter.emit;)
+y para recoger el valor del evento emitido, recogemos en: "$event"
+  <dragonball-character-add (newCaracter)="addCharacter($event)"/>
+
+* En el ts declaramos el método para añadir el componente y actualizamos la señal
+export class DragonballSuperPageComponent {
+  addCharacter(newCharacter: Character) {
+    this.characters.update((list)=>[...list,newCharacter]);
+  }
 
 
 
 
+**************************************************
+* Para clonar un repositorio:
+reneg@DESKTOP-LMA62OH MINGW64 /c/angular
+$ git clone https://github.com/DevTalles-corp/angular-bases.git
 
+* Y ahora instalar los módulos de la aplicación
+reneg@DESKTOP-LMA62OH MINGW64 /c/angular/angular-bases (main)
+$ npm install
 
-
-
-
-
-
-
+git add .
+git commit -m "Curso AngularV19"
+git push -u origin main
 
 
 
