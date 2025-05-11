@@ -339,6 +339,30 @@ const loadFromLocalStorage = (): Character[] => {
 * Si me los quiero traer a una nueva señal puede ser con:
   charactersLS = signal<Character[]>(loadFromLocalStorage());
 
+****************************************************************(11/05/2025)
+* Desplegar nuestra aplicación
+1º- Borrar la carpeta: node_modules
+2º- ejecutar el script: ng build para que se construya la carpeta de distribución
+3º- abrir: https://www.netlify.com/ para hacer el despliegue de nuestra distribución
+4º- arrastrar la carpeta 'browser' dentro de la carpeta de distrución
+5º- En siteoverview nos muestra la url del despliegue en internet
+6º- Por defecto, nos está dando un problema al cargar las páginas
+7º- Necesitamos una estrategia de HashStrategy:
+En el app.config.ts incluímos lo siguiente:
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    // HashStrategy
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
+  ]
+};
+
+
 
 ****************************************************************(11/05/2025)
 Aumentar tamaño Máquina Virtual VirtualBox
@@ -363,7 +387,7 @@ DISKPART>delete partition override
 y cambiar el tamaño de la partición principal con botón derecho
 y extender partición para añadir la nueva partición.
 
-****************************************************************
+****************************************************************(11/05/2025)
 * Para clonar un repositorio:
 reneg@DESKTOP-LMA62OH MINGW64 /c/angular
 $ git clone https://github.com/DevTalles-corp/angular-bases.git
